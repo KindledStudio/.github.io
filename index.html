@@ -421,6 +421,72 @@
     }
     .contact-email:hover { color: var(--orange); }
 
+    /* GREEK BLOCK */
+    .greek-block {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 40px 48px;
+      border: 1px solid rgba(200,160,98,0.12);
+      position: relative;
+    }
+    .greek-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(229,114,74,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .greek-context {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ivory-mute);
+      padding-left: 0.4em;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .greek-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      line-height: 1;
+      text-align: center;
+    }
+    .greek-transliteration {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding-left: 0.45em;
+      text-align: center;
+    }
+    .greek-rule {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 6px auto;
+    }
+    .greek-definition {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--ivory-dim);
+      line-height: 1.8;
+      text-align: center;
+    }
+
     /* FOOTER */
     footer {
       padding: 28px 52px; border-top: 1px solid rgba(184,146,74,0.07);
@@ -715,6 +781,14 @@
       <div class="contact-direct reveal">
         <div class="contact-or">or reach out directly</div>
         <a class="contact-email" href="mailto:hello@kindledstudio.org">hello@kindledstudio.org</a>
+      </div>
+
+      <div class="greek-block reveal">
+        <div class="greek-context">The Greek word behind our name.</div>
+        <div class="greek-word">&#7936;&#957;&#945;&#950;&#969;&#960;&#965;&#961;&#941;&#969;</div>
+        <div class="greek-transliteration">anazopyreo</div>
+        <div class="greek-rule"></div>
+        <div class="greek-definition">To stir up, to rekindle a fire.<br>2 Timothy 1:6</div>
       </div>
     </div>
   </section>
