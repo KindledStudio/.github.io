@@ -11,15 +11,15 @@
     :root {
       --black:      #0C0B09;
       --black-soft: #111009;
-      --black-card: #141209;
+      --black-card: #1A1814;
       --orange:     #E5724A;
-      --gold:       #B8924A;
-      --gold-dim:   #7A5E2E;
-      --gold-mute:  #3A2C14;
-      --ivory:      #EDE4D4;
-      --ivory-dim:  #C8BAA0;
-      --ivory-mute: #7A6A50;
-      --rule:       rgba(184,146,74,0.22);
+      --gold:       #C8A062;
+      --gold-dim:   #A07840;
+      --gold-mute:  #6A5030;
+      --ivory:      #F0E8D8;
+      --ivory-dim:  #D8C8A8;
+      --ivory-mute: #A89878;
+      --rule:       rgba(200,160,98,0.30);
     }
 
     html { scroll-behavior: smooth; }
@@ -223,14 +223,14 @@
     .about-verse {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-weight: 300; font-size: 13px;
-      letter-spacing: 0.04em; color: var(--gold-dim); line-height: 1.7;
+      letter-spacing: 0.04em; color: var(--ivory-dim); line-height: 1.7;
       padding-top: 4px; border-top: 1px solid var(--rule);
     }
     .about-right { display: flex; flex-direction: column; gap: 18px; padding-top: 6px; }
     .about-body {
       font-family: 'Jost', sans-serif;
       font-weight: 300; font-size: 14px; line-height: 1.9;
-      color: var(--ivory-mute); letter-spacing: 0.02em;
+      color: var(--ivory-dim); letter-spacing: 0.02em;
     }
     .about-body strong { color: var(--ivory-dim); font-weight: 400; }
     .about-conviction {
@@ -266,8 +266,8 @@
     }
     .service-desc {
       font-family: 'Jost', sans-serif;
-      font-weight: 200; font-size: 12px; line-height: 1.85;
-      color: var(--ivory-mute); letter-spacing: 0.02em; flex: 1;
+      font-weight: 300; font-size: 12px; line-height: 1.85;
+      color: var(--ivory-dim); letter-spacing: 0.02em; flex: 1;
     }
     .service-price {
       display: inline-block;
@@ -286,7 +286,7 @@
       text-align: center; margin-top: 48px;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-weight: 300; font-size: 14px;
-      letter-spacing: 0.04em; color: var(--gold-dim); line-height: 1.7;
+      letter-spacing: 0.04em; color: var(--ivory-dim); line-height: 1.7;
     }
 
     /* PORTFOLIO */
@@ -303,22 +303,22 @@
     .portfolio-placeholder {
       position: absolute; inset: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; opacity: 0.25; transition: opacity 0.3s ease;
+      gap: 10px; opacity: 0.55; transition: opacity 0.3s ease;
     }
     .portfolio-item:hover .portfolio-placeholder { opacity: 0.5; }
     .portfolio-placeholder-icon {
       width: 28px; height: 28px;
-      border: 1px solid var(--gold-dim); border-radius: 50%;
+      border: 1px solid var(--ivory-dim); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
     .portfolio-placeholder-icon::after {
       content: '+'; font-family: 'Jost', sans-serif;
-      font-weight: 200; font-size: 16px; color: var(--gold-dim); line-height: 1;
+      font-weight: 200; font-size: 16px; color: var(--ivory-dim); line-height: 1;
     }
     .portfolio-placeholder-label {
       font-family: 'Jost', sans-serif;
       font-weight: 200; font-size: 8px; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gold-dim); padding-left: 0.3em;
+      text-transform: uppercase; color: var(--ivory-dim); padding-left: 0.3em;
     }
     .portfolio-overlay {
       position: absolute; inset: 0; background: rgba(12,11,9,0.88);
@@ -339,7 +339,7 @@
       text-align: center; margin-top: 52px;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-weight: 300; font-size: 14px;
-      color: var(--gold-mute); letter-spacing: 0.04em;
+      color: var(--ivory-dim); letter-spacing: 0.04em;
     }
 
     /* CONTACT */
@@ -362,16 +362,16 @@
     .contact-heading em { font-style: italic; color: var(--orange); }
     .contact-sub {
       font-family: 'Jost', sans-serif;
-      font-weight: 200; font-size: 13px; line-height: 1.9;
-      color: var(--ivory-mute); text-align: center; letter-spacing: 0.02em; margin-bottom: 48px;
+      font-weight: 300; font-size: 13px; line-height: 1.9;
+      color: var(--ivory-dim); text-align: center; letter-spacing: 0.02em; margin-bottom: 48px;
     }
     .contact-form { width: 100%; display: flex; flex-direction: column; gap: 16px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 7px; }
     .form-group label {
       font-family: 'Jost', sans-serif;
-      font-weight: 200; font-size: 8.5px; letter-spacing: 0.35em;
-      text-transform: uppercase; color: var(--gold-dim); padding-left: 0.35em;
+      font-weight: 300; font-size: 8.5px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--ivory-dim); padding-left: 0.35em;
     }
     .form-group input,
     .form-group textarea,
@@ -412,12 +412,12 @@
     .contact-or {
       font-family: 'Jost', sans-serif;
       font-weight: 200; font-size: 8px; letter-spacing: 0.35em;
-      text-transform: uppercase; color: var(--gold-mute); padding-left: 0.35em;
+      text-transform: uppercase; color: var(--ivory-mute); padding-left: 0.35em;
     }
     .contact-email {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 400; font-size: 18px; letter-spacing: 0.06em;
-      color: var(--ivory-dim); text-decoration: none; transition: color 0.3s ease;
+      color: var(--ivory); text-decoration: none; transition: color 0.3s ease;
     }
     .contact-email:hover { color: var(--orange); }
 
@@ -429,11 +429,11 @@
     .footer-left {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-weight: 300; font-size: 11px;
-      letter-spacing: 0.04em; color: var(--gold-mute);
+      letter-spacing: 0.04em; color: var(--ivory-mute);
     }
     .footer-right {
       font-family: 'Jost', sans-serif;
-      font-weight: 200; font-size: 8px; letter-spacing: 0.25em; color: var(--gold-mute);
+      font-weight: 200; font-size: 8px; letter-spacing: 0.25em; color: var(--ivory-mute);
     }
 
     /* RESPONSIVE */
@@ -619,8 +619,16 @@
 
         <div class="service-card reveal">
           <div class="service-number">04</div>
+          <div class="service-name">Logo &amp; Branding</div>
+          <p class="service-desc">A complete brand identity for your church or ministry. Includes logo mark, color palette, and type system delivered in all standard file formats — ready for print and web.</p>
+          <div class="service-price">$200</div>
+          <div class="service-price-note">Flat fee per package</div>
+        </div>
+
+        <div class="service-card reveal" style="grid-column: 1 / -1;">
+          <div class="service-number">05</div>
           <div class="service-name">Custom Project</div>
-          <p class="service-desc">Logo and brand identity packages, sermon series graphics, event campaigns, or anything else your church needs. If it involves design and it serves the church, there is a good chance we can make it happen. Logo &amp; branding packages start at $150.</p>
+          <p class="service-desc">Have something unique in mind? Kindled Studio can put your design on virtually any product — apparel, mugs, banners, signage, promotional items, church merch, event materials, and more. If it can be designed and printed, we can make it happen. Reach out and let's talk about what you need.</p>
           <div class="service-price">Let's Talk</div>
           <div class="service-price-note">Quoted per project</div>
         </div>
@@ -693,8 +701,8 @@
             <option value="" disabled selected>Select a service...</option>
             <option>Single Graphic</option>
             <option>Print Design</option>
-            <option>Logo &amp; Branding</option>
             <option>Business Cards</option>
+            <option>Logo &amp; Branding</option>
             <option>Custom Project</option>
           </select>
         </div>
