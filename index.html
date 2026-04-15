@@ -22,6 +22,9 @@
       --rule:       rgba(200,160,98,0.30);
     }
 
+    /* Force color rendering on all browsers */
+    * { -webkit-text-fill-color: inherit; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -35,6 +38,967 @@
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--gold-mute); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 52px;
+      background: linear-gradient(to bottom, rgba(12,11,9,0.96) 0%, rgba(12,11,9,0) 100%);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .nav-candle svg { width: 18px; height: 26px; }
+    .nav-wordmark { display: flex; flex-direction: column; gap: 1px; }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 17px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ivory); line-height: 1; padding-left: 0.2em;
+    }
+    .nav-tag {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 7px; letter-spacing: 0.5em;
+      text-transform: uppercase; color: #A89878 !important; padding-left: 0.5em;
+      text-decoration: none; -webkit-text-fill-color: #A89878;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 200;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #F0E8D8;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; right: 0;
+      width: 260px;
+      height: 100vh;
+      background: #111009;
+      border-left: 1px solid rgba(200,160,98,0.12);
+      z-index: 150;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 40px;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      color: #F0E8D8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .mobile-menu a:hover { color: #E5724A; }
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 140;
+    }
+    .mobile-overlay.open { display: block; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 10px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--ivory-mute);
+      text-decoration: none; transition: color 0.3s ease; padding-left: 0.3em;
+    }
+    .nav-links a:hover { color: var(--ivory); }
+
+    /* SHARED SECTION */
+    section { position: relative; width: 100%; }
+    .section-inner { max-width: 920px; margin: 0 auto; padding: 0 40px; }
+
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400; font-size: 11px; letter-spacing: 0.45em;
+      text-transform: uppercase; color: var(--ivory-dim);
+      text-align: center; padding-left: 0.45em; margin-bottom: 0;
+    }
+    .section-rule {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 18px auto 48px;
+    }
+
+    /* REVEAL */
+    .js-ready .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .js-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      text-align: center; position: relative;
+      overflow: hidden; padding: 140px 40px 80px;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; bottom: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at 50% 100%,
+        rgba(229,114,74,0.14) 0%, rgba(196,88,48,0.06) 38%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-candle-wrap {
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 90px; z-index: 1; pointer-events: none;
+    }
+    .hero-candle-wrap svg { width: 100%; display: block; }
+    .hero-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400; font-size: 11px; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--ivory-dim);
+      padding-left: 0.5em; margin-bottom: 22px;
+      white-space: nowrap;
+      font-size: clamp(7px, 2.2vw, 11px);
+      opacity: 0; animation: fadeUp 1s ease 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: clamp(52px, 8vw, 88px);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ivory); line-height: 1; padding-left: 0.14em; margin-bottom: 10px;
+      opacity: 0; animation: fadeUp 1s ease 0.4s forwards;
+    }
+    .hero-studio {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: clamp(13px, 1.8vw, 18px);
+      letter-spacing: 0.7em; text-transform: uppercase;
+      color: var(--ivory-mute); padding-left: 0.7em;
+      margin-top: 6px; margin-bottom: 0;
+      opacity: 0; animation: fadeUp 1s ease 0.55s forwards;
+    }
+    .hero-rule {
+      width: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--orange), transparent);
+      margin: 18px auto;
+      opacity: 0; animation: fadeUp 1s ease 0.6s forwards;
+    }
+    .hero-light {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(22px, 3.5vw, 34px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      padding-left: 0.18em;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .hero-light {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(22px, 3.5vw, 34px);
+      letter-spacing: 0.16em;
+      color: var(--orange);
+      padding-left: 0.16em;
+      margin-bottom: 6px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.72s forwards;
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(16px, 2.5vw, 22px); letter-spacing: 0.06em;
+      color: var(--ivory-dim); margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 1s ease 0.88s forwards;
+    }
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 10px; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--ivory); text-decoration: none;
+      padding: 13px 32px; padding-left: calc(32px + 0.38em);
+      border: 1px solid rgba(229,114,74,0.35);
+      position: relative; overflow: hidden;
+      transition: color 0.4s ease, border-color 0.4s ease;
+      opacity: 0; animation: fadeUp 1s ease 0.95s forwards;
+    }
+    .hero-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--orange); transform: translateX(-101%);
+      transition: transform 0.4s ease;
+    }
+    .hero-cta:hover::before { transform: translateX(0); }
+    .hero-cta:hover { color: var(--black); border-color: var(--orange); }
+    .hero-cta span { position: relative; z-index: 1; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes flicker {
+      0%,100% { transform: scaleX(1)    scaleY(1)    translateX(0);    opacity: 1;    }
+      14%     { transform: scaleX(0.93) scaleY(1.06) translateX(0.6px); opacity: 0.92; }
+      30%     { transform: scaleX(1.04) scaleY(0.96) translateX(-0.5px);opacity: 0.97; }
+      48%     { transform: scaleX(0.95) scaleY(1.07) translateX(0.5px); opacity: 0.88; }
+      65%     { transform: scaleX(1.03) scaleY(0.95) translateX(-0.6px);opacity: 0.94; }
+      82%     { transform: scaleX(0.94) scaleY(1.04) translateX(0.3px); opacity: 0.91; }
+    }
+    .flame-g { animation: flicker 3.8s ease-in-out infinite; }
+
+    /* ABOUT */
+    #about { padding: 120px 0; background: var(--black-soft); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1px 1fr;
+      gap: 0 60px; align-items: start;
+    }
+    .about-vert-rule { background: var(--rule); height: 100%; min-height: 180px; }
+    .about-left { display: flex; flex-direction: column; gap: 20px; }
+    .about-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 30px; letter-spacing: 0.04em;
+      color: var(--ivory); line-height: 1.2; max-width: 420px;
+    }
+    .about-heading em { font-style: italic; color: var(--orange); }
+    .about-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300; font-size: 13px;
+      letter-spacing: 0.04em; color: var(--ivory-dim); line-height: 1.7;
+      padding-top: 4px; border-top: 1px solid var(--rule);
+    }
+    .about-right { display: flex; flex-direction: column; gap: 18px; padding-top: 6px; }
+    .about-body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 14px; line-height: 1.9;
+      color: var(--ivory-dim); letter-spacing: 0.02em;
+    }
+    .about-body strong { color: var(--ivory-dim); font-weight: 400; }
+    .about-conviction {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 17px; letter-spacing: 0.04em;
+      color: var(--ivory); line-height: 1.6;
+      padding: 18px 0 18px 20px; border-left: 2px solid var(--orange);
+    }
+
+    /* SERVICES */
+    #services { padding: 120px 0; background: var(--black); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; width: 100%; }
+    .service-card {
+      background: var(--black-card); padding: 44px 36px;
+      display: flex; flex-direction: column; gap: 14px;
+      position: relative; overflow: hidden; transition: background 0.4s ease;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, var(--rule), transparent);
+    }
+    .service-card:hover { background: #181510; }
+    .service-card:hover .service-number { color: var(--orange); }
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 11px; letter-spacing: 0.3em;
+      color: var(--gold-mute); transition: color 0.4s ease; padding-left: 0.3em;
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 22px; letter-spacing: 0.06em;
+      color: var(--ivory); line-height: 1.2;
+    }
+    .service-desc {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 12px; line-height: 1.85;
+      color: var(--ivory-dim); letter-spacing: 0.02em; flex: 1;
+    }
+    .service-price {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 20px; letter-spacing: 0.06em;
+      color: var(--orange); margin-top: 8px;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1;
+    }
+    .service-price-note {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 9px; letter-spacing: 0.2em;
+      color: var(--gold-mute); margin-top: 3px;
+    }
+    .services-note {
+      text-align: center; margin-top: 48px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300; font-size: 14px;
+      letter-spacing: 0.04em; color: var(--ivory-dim); line-height: 1.7;
+    }
+
+    /* DESIGNER */
+    #designer { padding: 120px 0; background: var(--black); }
+    .designer-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .designer-photo-inner {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--black-card);
+      position: relative;
+      overflow: hidden;
+    }
+    .designer-photo-inner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg,
+        rgba(229,114,74,0.06) 0%, transparent 60%);
+    }
+    .designer-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+    }
+    .designer-photo-icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--ivory-dim); border-radius: 50%;
+      opacity: 0.3;
+    }
+    .designer-photo-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 8px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--ivory-dim);
+      opacity: 0.3; padding-left: 0.3em;
+    }
+    .designer-bio {
+      display: flex; flex-direction: column; gap: 20px; padding-top: 8px;
+    }
+    .designer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 42px; letter-spacing: 0.1em;
+      color: var(--ivory); line-height: 1;
+    }
+    .designer-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 10px; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--orange);
+      padding-left: 0.4em;
+    }
+    .designer-rule {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .designer-body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 14px; line-height: 1.95;
+      color: var(--ivory-dim); letter-spacing: 0.02em;
+    }
+    .designer-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400; font-size: 15px;
+      letter-spacing: 0.04em; color: var(--ivory-mute);
+      padding: 16px 0 16px 20px;
+      border-left: 2px solid var(--orange);
+      margin-top: 4px;
+    }
+
+    /* PORTFOLIO */
+    #portfolio { padding: 120px 0; background: var(--black-soft); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .portfolio-item {
+      aspect-ratio: 4/3; background: var(--black-card);
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .portfolio-item::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(229,114,74,0.04) 0%, transparent 60%);
+    }
+    .portfolio-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; opacity: 0.55; transition: opacity 0.3s ease;
+    }
+    .portfolio-item:hover .portfolio-placeholder { opacity: 0.5; }
+    .portfolio-placeholder-icon {
+      width: 28px; height: 28px;
+      border: 1px solid var(--ivory-dim); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .portfolio-placeholder-icon::after {
+      content: '+'; font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 16px; color: var(--ivory-dim); line-height: 1;
+    }
+    .portfolio-placeholder-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 8px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--ivory-dim); padding-left: 0.3em;
+    }
+    .portfolio-overlay {
+      position: absolute; inset: 0; background: rgba(12,11,9,0.88);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; opacity: 0; transition: opacity 0.35s ease;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 17px; letter-spacing: 0.1em; color: var(--ivory);
+    }
+    .portfolio-cat {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 8px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--orange); padding-left: 0.35em;
+    }
+    .portfolio-coming {
+      text-align: center; margin-top: 52px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300; font-size: 14px;
+      color: var(--ivory-dim); letter-spacing: 0.04em;
+    }
+
+    /* CONTACT */
+    #contact { padding: 120px 0 100px; background: var(--black); position: relative; overflow: hidden; }
+    #contact::before {
+      content: ''; position: absolute; bottom: -100px; left: 50%;
+      transform: translateX(-50%); width: 600px; height: 400px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(229,114,74,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      max-width: 600px; margin: 0 auto; padding: 0 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 40px; letter-spacing: 0.1em;
+      color: var(--ivory); text-align: center; line-height: 1.2; margin-bottom: 14px;
+    }
+    .contact-heading em { font-style: italic; color: var(--orange); }
+    .contact-sub {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 13px; line-height: 1.9;
+      color: var(--ivory-dim); text-align: center; letter-spacing: 0.02em; margin-bottom: 48px;
+    }
+    .contact-form { width: 100%; display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 8.5px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--ivory-dim); padding-left: 0.35em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--black-card); border: 1px solid rgba(184,146,74,0.12);
+      border-radius: 0; padding: 12px 16px;
+      font-family: 'Jost', sans-serif; font-weight: 200; font-size: 12px;
+      letter-spacing: 0.04em; color: var(--ivory); outline: none;
+      transition: border-color 0.3s ease; -webkit-appearance: none; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: rgba(229,114,74,0.4); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gold-mute); }
+    .form-group select option { background: var(--black-card); color: var(--ivory); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      display: inline-block; align-self: center;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300; font-size: 10px; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--ivory); background: transparent;
+      border: 1px solid rgba(229,114,74,0.35);
+      padding: 14px 44px; padding-left: calc(44px + 0.38em);
+      cursor: pointer; position: relative; overflow: hidden;
+      transition: color 0.4s ease, border-color 0.4s ease; margin-top: 8px;
+    }
+    .form-submit::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--orange); transform: translateX(-101%); transition: transform 0.4s ease;
+    }
+    .form-submit:hover::before { transform: translateX(0); }
+    .form-submit:hover { color: var(--black); border-color: var(--orange); }
+    .form-submit span { position: relative; z-index: 1; }
+    .contact-direct {
+      margin-top: 44px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .contact-or {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 8px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--ivory-mute); padding-left: 0.35em;
+    }
+    .contact-email {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400; font-size: 18px; letter-spacing: 0.06em;
+      color: var(--ivory); text-decoration: none; transition: color 0.3s ease;
+    }
+    .contact-email:hover { color: var(--orange); }
+
+    /* GREEK BLOCK */
+    .greek-block {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 40px 48px;
+      border: 1px solid rgba(200,160,98,0.12);
+      position: relative;
+    }
+    .greek-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(229,114,74,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .greek-context {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ivory-mute);
+      padding-left: 0.4em;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .greek-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      line-height: 1;
+      text-align: center;
+    }
+    .greek-transliteration {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding-left: 0.45em;
+      text-align: center;
+    }
+    .greek-rule {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 6px auto;
+    }
+    .greek-definition {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--ivory-dim);
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 52px; border-top: 1px solid rgba(184,146,74,0.07);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-left {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300; font-size: 11px;
+      letter-spacing: 0.04em; color: var(--ivory-mute);
+    }
+    .footer-right {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200; font-size: 8px; letter-spacing: 0.25em; color: var(--ivory-mute);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .section-inner { padding: 0 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-vert-rule { display: none; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      .designer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .greek-block { padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">
+      <div class="nav-candle">
+        <svg viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+          <defs>
+            <radialGradient id="nfO" cx="50%" cy="70%" r="52%">
+              <stop offset="0%" stop-color="#FFF2B0"/>
+              <stop offset="30%" stop-color="#FFAA28"/>
+              <stop offset="65%" stop-color="#E84E0C"/>
+              <stop offset="100%" stop-color="#AA1C00" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="nfI" cx="50%" cy="62%" r="44%">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="25%" stop-color="#FFF6DC"/>
+              <stop offset="100%" stop-color="#FFB835" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="ncB" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#8C7A5A"/>
+              <stop offset="40%" stop-color="#F2EAD8"/>
+              <stop offset="100%" stop-color="#7A6848"/>
+            </linearGradient>
+          </defs>
+          <g class="flame-g" style="transform-origin: 15px 12px;">
+            <path d="M15 2 C13.5 5 9 9 9 14 C9 18.5 11.8 21 15 22 C18.2 21 21 18.5 21 14 C21 9 16.5 5 15 2Z" fill="url(#nfO)"/>
+            <path d="M15 5 C14 7.5 12 11 12 14.5 C12 17.5 13.3 19.5 15 20.5 C16.7 19.5 18 17.5 18 14.5 C18 11 16 7.5 15 5Z" fill="url(#nfI)"/>
+          </g>
+          <line x1="15" y1="22" x2="15" y2="26" stroke="#180E06" stroke-width="1" stroke-linecap="round"/>
+          <rect x="10" y="25" width="10" height="19" rx="0.5" fill="url(#ncB)"/>
+        </svg>
+      </div>
+      <div class="nav-wordmark">
+        <div class="nav-name">Kindled</div>
+        <div class="nav-tag">Studio</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Mission</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#designer">Designer</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="overlay" onclick="toggleMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">Mission</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#portfolio" onclick="toggleMenu()">Work</a>
+    <a href="#designer" onclick="toggleMenu()">Designer</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Graphic Design for the Church &amp; Beyond</div>
+      <h1 class="hero-title">Kindled</h1>
+      <div class="hero-studio">Studio</div>
+      <div class="hero-rule"></div>
+      <p class="hero-light">A light in the dark.</p>
+      <p class="hero-sub">Design is a calling, not just a craft.</p>
+      <a class="hero-cta" href="#contact"><span>Get in Touch</span></a>
+    </div>
+    <div class="hero-candle-wrap">
+      <svg viewBox="0 0 80 340" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+        <defs>
+          <radialGradient id="hfO" cx="50%" cy="70%" r="52%">
+            <stop offset="0%" stop-color="#FFF2B0"/>
+            <stop offset="28%" stop-color="#FFAA28"/>
+            <stop offset="62%" stop-color="#E84E0C"/>
+            <stop offset="100%" stop-color="#AA1C00" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hfI" cx="50%" cy="62%" r="44%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="22%" stop-color="#FFF6DC"/>
+            <stop offset="100%" stop-color="#FFB835" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="hHalo" cx="50%" cy="52%" r="50%">
+            <stop offset="0%" stop-color="#FF8C18" stop-opacity="0.32"/>
+            <stop offset="100%" stop-color="#FF3000" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hcB" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8C7A5A"/>
+            <stop offset="12%" stop-color="#DED0B8"/>
+            <stop offset="38%" stop-color="#F2EAD8"/>
+            <stop offset="62%" stop-color="#EAE0CC"/>
+            <stop offset="85%" stop-color="#C8B898"/>
+            <stop offset="100%" stop-color="#7A6848"/>
+          </linearGradient>
+          <radialGradient id="hPool" cx="48%" cy="46%" r="52%">
+            <stop offset="0%" stop-color="#FFFAF2"/>
+            <stop offset="50%" stop-color="#EAD8BC"/>
+            <stop offset="100%" stop-color="#C4A880"/>
+          </radialGradient>
+          <filter id="hfGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feComposite in="SourceGraphic" in2="b" operator="over"/>
+          </filter>
+          <filter id="hhBlur" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="7"/>
+          </filter>
+        </defs>
+        <ellipse cx="40" cy="40" rx="32" ry="32" fill="url(#hHalo)" filter="url(#hhBlur)"/>
+        <g class="flame-g" style="transform-origin: 40px 60px;">
+          <path d="M40 10 C37.5 16 30 26 30 39 C30 50 34.8 57 40 60 C45.2 57 50 50 50 39 C50 26 42.5 16 40 10Z" fill="url(#hfO)" filter="url(#hfGlow)"/>
+          <path d="M40 18 C38.5 23 35 30 35 39.5 C35 47 37.4 52 40 54.5 C42.6 52 45 47 45 39.5 C45 30 41.5 23 40 18Z" fill="url(#hfI)"/>
+          <ellipse cx="40" cy="40" rx="3" ry="4.5" fill="white" opacity="0.95"/>
+        </g>
+        <line x1="40" y1="60" x2="40" y2="68" stroke="#180E06" stroke-width="1.4" stroke-linecap="round"/>
+        <ellipse cx="40" cy="70" rx="15" ry="5" fill="url(#hPool)"/>
+        <rect x="25" y="68" width="30" height="272" rx="1.5" fill="url(#hcB)"/>
+        <rect x="27" y="72" width="3.5" height="264" rx="1.5" fill="white" opacity="0.09"/>
+        <path d="M25 100 C23.2 105 22.6 113 23.2 120 C23.7 125 25 126 25 132 L25 100Z" fill="#D6C8AE" opacity="0.7"/>
+        <path d="M55 175 C56.6 180 57 187 56.4 193 C56 197 55 197 55 202 L55 175Z" fill="#D0C2A6" opacity="0.5"/>
+        <path d="M25 240 C23.8 244 23.5 249 24 253 C24.4 256 25 256 25 259 L25 240Z" fill="#CCB898" opacity="0.4"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label reveal">Mission</div>
+      <div class="section-rule reveal"></div>
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <h2 class="about-heading">Design is a <em>stewardship,</em><br>not just a skill.</h2>
+          <p class="about-verse">"Wherefore I put thee in remembrance that thou stir up the gift of God, which is in thee." — 2 Timothy 1:6</p>
+        </div>
+        <div class="about-vert-rule reveal"></div>
+        <div class="about-right reveal">
+          <p class="about-body">Kindled Studio exists to serve the local church and beyond with design that is <strong>purposeful, God-honoring, and built to last.</strong> Christ's church is the greatest organization on earth — and it deserves to look like it.</p>
+          <blockquote class="about-conviction">Every project is a gift from God, pursued relentlessly in His honor.</blockquote>
+          <p class="about-body">Founded by Elijah Lake, Kindled Studio brings together a theology of excellence and a passion for visual craft — serving churches, ministries, and mission-minded organizations with print and branding work that communicates clearly and reflects the weight of the message behind it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-label reveal">Services &amp; Pricing</div>
+      <div class="section-rule reveal"></div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-number">01</div>
+          <div class="service-name">Single Graphic</div>
+          <p class="service-desc">Social media posts, announcements, event flyers, or any standalone graphic. Delivered print-ready or web-optimized, whatever the project calls for.</p>
+          <div class="service-price">$25</div>
+          <div class="service-price-note">Flat fee per graphic</div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-number">02</div>
+          <div class="service-name">Print Design</div>
+          <p class="service-desc">Bulletins, trifolds, banners, mailers, and other print collateral. Delivered as print-ready CMYK PDFs with bleed and crop marks. Printing and shipping costs are billed at actual cost — no markup.</p>
+          <div class="service-price">$50</div>
+          <div class="service-price-note">Flat design fee &middot; shipping billed at actual cost</div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-number">03</div>
+          <div class="service-name">Business Cards</div>
+          <p class="service-desc">Professional business cards for pastors, staff, or ministry teams. Designed to reflect your church's identity with care. Printing and shipping costs are billed at actual cost — no markup.</p>
+          <div class="service-price">$50</div>
+          <div class="service-price-note">Flat design fee &middot; shipping billed at actual cost</div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-number">04</div>
+          <div class="service-name">Logo &amp; Branding</div>
+          <p class="service-desc">A complete brand identity for your church or ministry. Includes logo mark, color palette, and type system delivered in all standard file formats — ready for print and web.</p>
+          <div class="service-price">$200</div>
+          <div class="service-price-note">Flat fee per package</div>
+        </div>
+
+        <div class="service-card reveal" style="grid-column: 1 / -1;">
+          <div class="service-number">05</div>
+          <div class="service-name">Custom Project</div>
+          <p class="service-desc">Have something unique in mind? Kindled Studio can put your design on virtually any product — apparel, mugs, banners, signage, promotional items, church merch, event materials, and more. If it can be designed and printed, we can make it happen. Reach out and let's talk about what you need.</p>
+          <div class="service-price">Let's Talk</div>
+          <div class="service-price-note">Quoted per project</div>
+        </div>
+
+      </div>
+      <p class="services-note reveal">All design work is a flat fee. Printing and shipping are billed at actual cost — no markup, no surprises.</p>
+    </div>
+  </section>
+
+  <!-- DESIGNER -->
+  <section id="designer">
+    <div class="section-inner">
+      <div class="section-label reveal">About the Designer</div>
+      <div class="section-rule reveal"></div>
+      <div class="designer-grid">
+        <div class="designer-photo reveal">
+          <div class="designer-photo-inner">
+            <div class="designer-photo-placeholder">
+              <div class="designer-photo-icon"></div>
+              <div class="designer-photo-label">Your Photo Here</div>
+            </div>
+          </div>
+        </div>
+        <div class="designer-bio reveal">
+          <h2 class="designer-name">Elijah Lake</h2>
+          <div class="designer-title">Founder &amp; Designer, Kindled Studio</div>
+          <div class="designer-rule"></div>
+          <p class="designer-body">Elijah Lake is a graphic designer with a passion for serving the local church through purposeful, God-honoring design. He graduated from Vision Baptist College on April 30th, 2026 with a Bachelor of Theology and an emphasis in church media, web design, and graphic design.</p>
+          <p class="designer-body">Over the course of his studies and ministry involvement, he developed his craft serving churches through visual communication — from bulletins and branding to large format print, signage, and social media.</p>
+          <p class="designer-body">He currently serves as Head of AV at Blessed Hope Baptist Church in Batavia, NY, and founded Kindled Studio out of a deep conviction that the church deserves excellent design — pursued relentlessly, as unto the Lord.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <div class="section-label reveal">Selected Work</div>
+      <div class="section-rule reveal"></div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Branding</div></div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Print Design</div></div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Social Media</div></div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Print Design</div></div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Branding</div></div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-placeholder"><div class="portfolio-placeholder-icon"></div><div class="portfolio-placeholder-label">Add Project</div></div>
+          <div class="portfolio-overlay"><div class="portfolio-title">Project Title</div><div class="portfolio-cat">Social Media</div></div>
+        </div>
+      </div>
+      <p class="portfolio-coming reveal">Portfolio launching soon. Work samples available upon request.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label reveal">Get in Touch</div>
+      <div class="section-rule reveal"></div>
+      <h2 class="contact-heading reveal">Let's build something <em>worthy</em> of the message.</h2>
+      <p class="contact-sub reveal">Whether you need a single graphic or a full brand identity, reach out and let's talk about what your church needs.</p>
+      <form class="contact-form reveal" action="https://formspree.io/f/xbdqlbee" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Your Name</label>
+            <input type="text" id="fname" name="name" placeholder="Pastor John Smith"/>
+          </div>
+          <div class="form-group">
+            <label for="church">Church or Organization</label>
+            <input type="text" id="church" name="church" placeholder="Grace Baptist Church"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="pastor@yourchurch.com"/>
+        </div>
+        <div class="form-group">
+          <label for="project">Project Type</label>
+          <select id="project" name="project">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Single Graphic</option>
+            <option>Print Design</option>
+            <option>Business Cards</option>
+            <option>Logo &amp; Branding</option>
+            <option>Custom Project</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Me About Your Project</label>
+          <textarea id="message" name="body" placeholder="Describe what you need..."></textarea>
+        </div>
+        <button type="submit" class="form-submit"><span>Send Message</span></button>
+      </form>
+      <div class="contact-direct reveal">
+        <div class="contact-or">or reach out directly</div>
+        <a class="contact-email" href="mailto:hello@kindledstudio.org">hello@kindledstudio.org</a>
+      </div>
+
+      <div class="greek-block reveal">
+        <div class="greek-context">The Greek word behind our name.</div>
+        <div class="greek-word">&#7936;&#957;&#945;&#950;&#969;&#960;&#965;&#961;&#941;&#969;</div>
+        <div class="greek-transliteration">anazopyreo</div>
+        <div class="greek-rule"></div>
+        <div class="greek-definition">To stir up, to rekindle a fire.<br>2 Timothy 1:6</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">"Stir up the gift of God which is in thee." &mdash; 2 Tim. 1:6</div>
+    <div class="footer-right">&copy; 2026 Kindled Studio &middot; Elijah Lake</div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('hamburger').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+    }
+    document.body.classList.add('js-ready');
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          setTimeout(function() { entry.target.classList.add('visible'); }, 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>    ::-webkit-scrollbar-thumb { background: var(--gold-mute); border-radius: 2px; }
 
     /* NAV */
     nav {
