@@ -24,11 +24,14 @@
   --rule:       rgba(200,160,98,0.30);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: #0C0B09;
+}
 
 body {
-  background: var(--black);
-  color: var(--ivory);
+  background: #0C0B09;
+  color: #F0E8D8;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
@@ -55,7 +58,7 @@ nav {
 .nav-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500; font-size: 17px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--ivory); line-height: 1; padding-left: 0.2em;
+  text-transform: uppercase; color: #F0E8D8; line-height: 1; padding-left: 0.2em;
 }
 .nav-tag {
   font-family: 'Jost', sans-serif;
@@ -66,7 +69,7 @@ nav {
 .nav-links a {
   font-family: 'Jost', sans-serif;
   font-weight: 200; font-size: 10px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--ivory-mute);
+  text-transform: uppercase; color: #A89878;
   text-decoration: none; transition: color 0.3s ease; padding-left: 0.3em;
 }
 .nav-links a:hover { color: var(--ivory); }
@@ -131,7 +134,7 @@ section { position: relative; width: 100%; }
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400; font-size: clamp(52px, 8vw, 88px);
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ivory); line-height: 1; padding-left: 0.14em; margin-bottom: 10px;
+  color: #F0E8D8; line-height: 1; padding-left: 0.14em; margin-bottom: 10px;
   opacity: 0; animation: fadeUp 1s ease 0.4s forwards;
 }
 .hero-studio {
@@ -215,7 +218,7 @@ section { position: relative; width: 100%; }
 .flame-g { animation: flicker 3.8s ease-in-out infinite; }
 
 /* ABOUT */
-#about { padding: 120px 0; background: var(--black-soft); }
+#about { padding: 120px 0; background: #111009; }
 .about-grid {
   display: grid; grid-template-columns: 1fr 1px 1fr;
   gap: 0 60px; align-items: start;
@@ -249,10 +252,10 @@ section { position: relative; width: 100%; }
 }
 
 /* SERVICES */
-#services { padding: 120px 0; background: var(--black); }
+#services { padding: 120px 0; background: #0C0B09; }
 .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
 .service-card {
-  background: var(--black-card); padding: 44px 36px;
+  background: #1A1814; padding: 44px 36px;
   display: flex; flex-direction: column; gap: 14px;
   position: relative; overflow: hidden; transition: background 0.4s ease;
 }
@@ -298,7 +301,7 @@ section { position: relative; width: 100%; }
 }
 
 /* DESIGNER */
-#designer { padding: 120px 0; background: var(--black); }
+#designer { padding: 120px 0; background: #0C0B09; }
 .designer-grid {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -308,7 +311,7 @@ section { position: relative; width: 100%; }
 .designer-photo-inner {
   width: 100%;
   aspect-ratio: 3/4;
-  background: var(--black-card);
+  background: #1A1814;
   position: relative;
   overflow: hidden;
 }
@@ -367,10 +370,10 @@ section { position: relative; width: 100%; }
 }
 
 /* PORTFOLIO */
-#portfolio { padding: 120px 0; background: var(--black-soft); }
+#portfolio { padding: 120px 0; background: #111009; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 .portfolio-item {
-  aspect-ratio: 4/3; background: var(--black-card);
+  aspect-ratio: 4/3; background: #1A1814;
   position: relative; overflow: hidden; cursor: pointer;
 }
 .portfolio-item::before {
@@ -420,7 +423,7 @@ section { position: relative; width: 100%; }
 }
 
 /* CONTACT */
-#contact { padding: 120px 0 100px; background: var(--black); position: relative; overflow: hidden; }
+#contact { padding: 120px 0 100px; background: #0C0B09; position: relative; overflow: hidden; }
 #contact::before {
   content: ''; position: absolute; bottom: -100px; left: 50%;
   transform: translateX(-50%); width: 600px; height: 400px;
@@ -453,7 +456,7 @@ section { position: relative; width: 100%; }
 .form-group input,
 .form-group textarea,
 .form-group select {
-  background: var(--black-card); border: 1px solid rgba(184,146,74,0.12);
+  background: #1A1814; border: 1px solid rgba(184,146,74,0.12);
   border-radius: 0; padding: 12px 16px;
   font-family: 'Jost', sans-serif; font-weight: 200; font-size: 12px;
   letter-spacing: 0.04em; color: var(--ivory); outline: none;
