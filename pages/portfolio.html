@@ -16,7 +16,7 @@
     :root { --black:#0C0B09; --black-soft:#111009; --black-card:#1A1814; --orange:#E5724A; --gold:#C8A062; --gold-dim:#A07840; --gold-mute:#6A5030; --ivory:#F0E8D8; --ivory-dim:#D8C8A8; --ivory-mute:#A89878; --rule:rgba(200,160,98,0.30); }
     * { -webkit-text-fill-color: inherit; }
     html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+    body { background: var(--black); color: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; font-variant-numeric: tabular-nums; }
     ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--black); } ::-webkit-scrollbar-thumb { background: var(--gold-mute); border-radius: 2px; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 52px; background: linear-gradient(to bottom, rgba(12,11,9,0.96) 0%, rgba(12,11,9,0) 100%); }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
@@ -76,8 +76,8 @@
     .lightbox { position: fixed; inset: 0; background: rgba(6,5,4,0.96); z-index: 300; display: none; align-items: center; justify-content: center; padding: 60px 20px; }
     .lightbox.open { display: flex; }
     .lightbox-stage { position: relative; max-width: 880px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .lightbox-frame { position: relative; width: 100%; max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: center; touch-action: pan-y; }
-    #lightboxCanvas { display: block; width: 100%; border: 1px solid rgba(200,160,98,0.15); }
+    .lightbox-frame { position: relative; width: 100%; max-height: 72vh; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: pan-y; }
+    .lightbox-frame img { max-width: 100%; max-height: 72vh; object-fit: contain; border: 1px solid rgba(200,160,98,0.15); user-select: none; -webkit-user-drag: none; }
     .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(20,18,15,0.7); border: 1px solid rgba(229,114,74,0.35); color: var(--ivory); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: background 0.25s ease, border-color 0.25s ease; z-index: 2; }
     .lightbox-arrow:hover { background: var(--orange); border-color: var(--orange); }
     .lightbox-arrow.prev { left: -8px; }
@@ -169,7 +169,7 @@
       <div class="lightbox-close" id="lightboxClose">&times;</div>
       <div class="lightbox-frame" id="lightboxFrame">
         <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Previous side">&#8249;</button>
-        <canvas id="lightboxCanvas" width="1600" height="900"></canvas>
+        <img id="lightboxImg" src="" alt=""/>
         <button class="lightbox-arrow next" id="lightboxNext" aria-label="Next side">&#8250;</button>
       </div>
       <div class="lightbox-info">
@@ -210,25 +210,7 @@
     });
 
     var lightbox = document.getElementById('lightbox');
-    var lightboxCanvas = document.getElementById('lightboxCanvas');
-    var lightboxCtx = lightboxCanvas.getContext('2d');
-    var CANVAS_W = 1600, CANVAS_H = 900;
-
-    function drawImageToCanvas(src, alt) {
-      var img = new Image();
-      img.onload = function() {
-        lightboxCtx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-        // Letterbox: scale image to fit within canvas preserving aspect ratio
-        var scale = Math.min(CANVAS_W / img.naturalWidth, CANVAS_H / img.naturalHeight);
-        var dw = img.naturalWidth * scale;
-        var dh = img.naturalHeight * scale;
-        var dx = (CANVAS_W - dw) / 2;
-        var dy = (CANVAS_H - dh) / 2;
-        lightboxCtx.drawImage(img, dx, dy, dw, dh);
-      };
-      img.src = src;
-      lightboxCanvas.setAttribute('aria-label', alt || '');
-    }
+    var lightboxImg = document.getElementById('lightboxImg');
     var lightboxTitle = document.getElementById('lightboxTitle');
     var lightboxCat = document.getElementById('lightboxCat');
     var lightboxDots = document.getElementById('lightboxDots');
@@ -239,8 +221,8 @@
 
     function renderLightbox() {
       var item = portfolioItems[currentItem];
-      var alt = item.title + (item.images.length > 1 ? (currentSide === 0 ? ' — front' : ' — back') : '');
-      drawImageToCanvas(item.images[currentSide], alt);
+      lightboxImg.src = item.images[currentSide];
+      lightboxImg.alt = item.title + (item.images.length > 1 ? (currentSide === 0 ? ' front' : ' back') : '');
       lightboxTitle.textContent = item.title;
       lightboxCat.textContent = item.category;
       lightboxDots.innerHTML = '';
