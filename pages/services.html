@@ -69,6 +69,24 @@
     .qty-row span:last-child { color: var(--orange); font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 14px; }
     .services-note { text-align: center; margin-top: 48px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 14px; letter-spacing: 0.04em; color: var(--ivory-dim); line-height: 1.7; }
 
+    /* Reprints & Revisions */
+    #reprints { padding: 0 0 100px; background: var(--black); }
+    .reprints-intro { text-align: center; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.9; letter-spacing: 0.02em; color: var(--ivory-dim); max-width: 620px; margin: 0 auto 52px; }
+    .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 56px; }
+    .category-card { background: var(--black-card); padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+    .category-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--rule), transparent); }
+    .category-tag { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); padding-left: 0.25em; }
+    .category-name { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 19px; letter-spacing: 0.05em; color: var(--ivory); line-height: 1.25; }
+    .category-desc { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; line-height: 1.8; color: var(--ivory-dim); letter-spacing: 0.02em; }
+    .price-table-wrap { display: flex; flex-direction: column; gap: 2px; }
+    .price-table { background: var(--black-card); padding: 32px 36px; position: relative; }
+    .price-table::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--rule), transparent); }
+    .price-table-name { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 18px; letter-spacing: 0.05em; color: var(--ivory); margin-bottom: 18px; }
+    .price-table-grid { display: grid; grid-template-columns: 90px 1fr 1fr; row-gap: 10px; column-gap: 16px; align-items: center; }
+    .price-table-head { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ivory-mute); padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+    .price-table-qty { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; color: var(--ivory-mute); letter-spacing: 0.03em; }
+    .price-table-val { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 15px; color: var(--orange); }
+
     /* CTA */
     #cta { padding: 100px 0; background: var(--black-soft); text-align: center; }
     .cta-inner { max-width: 600px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
@@ -88,6 +106,9 @@
     @media (max-width: 760px) {
       nav { padding: 18px 24px; } .nav-links { display: none; } .hamburger { display: flex; } .mobile-menu { display: flex; }
       .section-inner { padding: 0 24px; } .services-grid { grid-template-columns: 1fr !important; }
+      .category-grid { grid-template-columns: 1fr !important; }
+      .price-table-grid { grid-template-columns: 70px 1fr 1fr; }
+      .price-table { padding: 28px 24px; }
       .page-hero { padding: 120px 24px 60px; } .cta-inner { padding: 0 24px; }
       footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
@@ -143,16 +164,16 @@
         <div class="service-card reveal">
           <div class="service-number">01</div>
           <div class="service-name">Single Graphic</div>
-          <p class="service-desc">Social media posts, announcements, event flyers, or any standalone graphic. Delivered print-ready or web-optimized, whatever the project calls for.</p>
+          <p class="service-desc">A single web-optimized graphic — a social media post, announcement, sermon screen slide, or website image. Delivered as a ready-to-use image file, sized for the platform it's going on.</p>
           <div class="service-price">$40</div>
-          <div class="service-price-note">Flat fee per graphic</div>
+          <div class="service-price-note">Flat fee per graphic &middot; web-optimized image</div>
         </div>
         <div class="service-card reveal">
           <div class="service-number">02</div>
           <div class="service-name">Business Cards</div>
-          <p class="service-desc">Professional business cards for pastors, staff, or ministry teams. Designed to reflect your church's identity with care. Printing and shipping are included in the flat fee — no surprise costs at checkout.</p>
+          <p class="service-desc">Professional business cards for pastors, staff, or ministry teams. Designed to reflect your church's identity with care. Printed at standard 3.5&Prime; x 2&Prime; size. Printing and shipping are included in the flat fee — no surprise costs at checkout.</p>
           <div class="service-price">$150</div>
-          <div class="service-price-note">Flat fee &middot; 250 min &middot; printing &amp; shipping included</div>
+          <div class="service-price-note">Flat fee &middot; 250 min &middot; 3.5&Prime; x 2&Prime; &middot; printing &amp; shipping included</div>
           <div class="qty-table">
             <div class="qty-row"><span>250</span><span>$150</span></div>
             <div class="qty-row"><span>500</span><span>$175</span></div>
@@ -162,21 +183,22 @@
         </div>
         <div class="service-card reveal">
           <div class="service-number">03</div>
-          <div class="service-name">Mailers &amp; Postcards</div>
-          <p class="service-desc">Direct mail pieces, event postcards, and church mailers. Delivered as print-ready CMYK PDFs with bleed and crop marks. Printing and shipping are included in the flat fee — no surprise costs at checkout.</p>
+          <div class="service-name">Postcards</div>
+          <p class="service-desc">Direct mail pieces, event postcards, and church mailers, printed full color, double sided, at 4&Prime; x 6&Prime;. Printing and shipping are included in the flat fee — no surprise costs at checkout.</p>
           <div class="service-price">$200</div>
-          <div class="service-price-note">Flat fee &middot; 250 min &middot; printing &amp; shipping included</div>
+          <div class="service-price-note">Flat fee &middot; 250 min &middot; 4&Prime; x 6&Prime; &middot; full color, double sided &middot; printing &amp; shipping included</div>
           <div class="qty-table">
             <div class="qty-row"><span>250</span><span>$200</span></div>
             <div class="qty-row"><span>500</span><span>$250</span></div>
             <div class="qty-row"><span>1,000</span><span>$300</span></div>
             <div class="qty-row"><span>2,500</span><span>$400</span></div>
           </div>
+          <div class="service-price-note" style="margin-top:2px;">Other sizes available — quoted per project</div>
         </div>
         <div class="service-card reveal">
           <div class="service-number">04</div>
           <div class="service-name">Logo &amp; Branding</div>
-          <p class="service-desc">A complete brand identity for your church or ministry. Includes logo mark, color palette, and type system delivered in all standard file formats, ready for print and web.</p>
+          <p class="service-desc">A complete brand identity for your church or ministry: primary logo mark, color palette, and type system. Delivered in industry-standard formats — vector AI and EPS for scaling to any size, print-ready PDF, and web-ready PNG, JPG, and SVG files — so you're never locked out of your own brand.</p>
           <div class="service-price">$500</div>
           <div class="service-price-note">Flat fee per package</div>
         </div>
@@ -189,6 +211,59 @@
         </div>
       </div>
       <p class="services-note reveal">Every service is a flat fee. Design, printing, and shipping — all included. No surprises.</p>
+    </div>
+  </section>
+
+  <section id="reprints">
+    <div class="section-inner">
+      <div class="section-label">Reprints &amp; Revisions</div>
+      <div class="section-rule"></div>
+      <p class="reprints-intro reveal">Need more of a design we've already produced? You don't pay full price twice. The rates below apply only to designs Kindled Studio has previously completed and shipped, priced below our standard rate since the design work is already done.</p>
+      <div class="category-grid">
+        <div class="category-card reveal">
+          <div class="category-tag">Reprint</div>
+          <div class="category-name">Same File, No Changes</div>
+          <p class="category-desc">Your existing design, sent back to press exactly as is. No text, layout, or image changes of any kind.</p>
+        </div>
+        <div class="category-card reveal">
+          <div class="category-tag">Minor Revision</div>
+          <div class="category-name">Small Text Updates</div>
+          <p class="category-desc">Updated dates, service times, contact info, or a swapped verse. Layout, images, and colors stay the same.</p>
+        </div>
+        <div class="category-card reveal">
+          <div class="category-tag">New Design</div>
+          <div class="category-name">Anything More</div>
+          <p class="category-desc">New images, resized elements, added sections, or layout changes. Priced as a new project at our standard rate.</p>
+        </div>
+      </div>
+      <div class="price-table-wrap">
+        <div class="price-table reveal">
+          <div class="price-table-name">Business Cards &middot; 3.5&Prime; x 2&Prime;</div>
+          <div class="price-table-grid">
+            <div class="price-table-head">Qty</div>
+            <div class="price-table-head">Reprint</div>
+            <div class="price-table-head">Revision</div>
+            <div class="price-table-qty">250</div><div class="price-table-val">$105</div><div class="price-table-val">$130</div>
+            <div class="price-table-qty">500</div><div class="price-table-val">$125</div><div class="price-table-val">$150</div>
+            <div class="price-table-qty">1,000</div><div class="price-table-val">$140</div><div class="price-table-val">$175</div>
+            <div class="price-table-qty">2,500</div><div class="price-table-val">$190</div><div class="price-table-val">$235</div>
+          </div>
+        </div>
+        <div class="price-table reveal">
+          <div class="price-table-name">Postcards &amp; Tracts &middot; 4&Prime; x 6&Prime; &middot; Full Color, Double Sided</div>
+          <div class="price-table-grid">
+            <div class="price-table-head">Qty</div>
+            <div class="price-table-head">Reprint</div>
+            <div class="price-table-head">Revision</div>
+            <div class="price-table-qty">250</div><div class="price-table-val">$140</div><div class="price-table-val">$170</div>
+            <div class="price-table-qty">500</div><div class="price-table-val">$175</div><div class="price-table-val">$210</div>
+            <div class="price-table-qty">1,000</div><div class="price-table-val">$210</div><div class="price-table-val">$260</div>
+            <div class="price-table-qty">2,500</div><div class="price-table-val">$280</div><div class="price-table-val">$340</div>
+          </div>
+        </div>
+        <p class="services-note reveal" style="margin-top:24px;">Other sizes available — quoted per project.</p>
+      </div>
+      <p class="services-note reveal">Not sure which category your request falls into? Reach out and we'll tell you plainly before any work begins.</p>
     </div>
   </section>
 
