@@ -92,6 +92,9 @@
     .section-rule { width: 40px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 18px auto 48px; }
     .video-wrap { width: 100%; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid rgba(200,160,98,0.12); }
     .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .video-intro { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 15px; letter-spacing: 0.03em; color: var(--ivory-dim); text-align: center; margin: -18px 0 32px; line-height: 1.7; }
+    .video-story-link { margin-top: 28px; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--ivory-mute); text-decoration: none; transition: color 0.3s ease; padding-left: 0.35em; }
+    .video-story-link:hover { color: var(--orange); }
 
     /* GREEK */
     .greek-block { margin-top: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 40px 48px; border: 1px solid rgba(200,160,98,0.12); position: relative; }
@@ -147,6 +150,7 @@
       <li><a href="pages/services.html">Services</a></li>
       <li><a href="pages/portfolio.html">Work</a></li>
       <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/story.html">My Story</a></li>
       <li><a href="pages/contact.html">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -160,6 +164,7 @@
     <a href="pages/services.html">Services</a>
     <a href="pages/portfolio.html">Work</a>
     <a href="pages/about.html">About</a>
+    <a href="pages/story.html">My Story</a>
     <a href="pages/contact.html">Contact</a>
   </div>
 
@@ -222,9 +227,11 @@
     <div class="video-inner">
       <div class="section-label reveal">Made for This</div>
       <div class="section-rule reveal"></div>
+      <p class="video-intro reveal">A short film on the journey from an old TV in a church youth room to Kindled Studio.</p>
       <div class="video-wrap reveal">
         <iframe src="https://www.youtube.com/embed/3o1sP1Jbs0w" title="Made for This — Elijah Lake" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <a href="pages/story.html" class="video-story-link reveal">Read the Full Story &rarr;</a>
     </div>
   </section>
 
