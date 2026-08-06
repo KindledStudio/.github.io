@@ -96,6 +96,24 @@
     .video-story-link { margin-top: 28px; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--ivory-mute); text-decoration: none; transition: color 0.3s ease; padding-left: 0.35em; }
     .video-story-link:hover { color: var(--orange); }
 
+    /* TESTIMONIALS */
+    #testimonials { padding: 100px 0; background: var(--black-soft); }
+    .testimonials-inner { max-width: 700px; margin: 0 auto; padding: 0 40px; text-align: center; }
+    .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(20px,3vw,26px); line-height: 1.65; color: var(--ivory); margin-bottom: 24px; }
+    .testimonial-attribution { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ivory-mute); }
+    .testimonial-church { font-weight: 200; color: var(--ivory-mute); opacity: 0.8; }
+    .testimonial-carousel { position: relative; display: flex; align-items: center; justify-content: center; }
+    .testimonial-content { max-width: 560px; padding: 0 60px; }
+    .testimonial-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(20,18,15,0.7); border: 1px solid rgba(229,114,74,0.35); color: var(--ivory); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: background 0.25s ease, border-color 0.25s ease; z-index: 2; }
+    .testimonial-arrow:hover { background: var(--orange); border-color: var(--orange); }
+    .testimonial-arrow.prev { left: 0; }
+    .testimonial-arrow.next { right: 0; }
+    .testimonial-arrow.hidden { display: none; }
+    .testimonial-dots { display: flex; gap: 8px; justify-content: center; margin-top: 26px; }
+    .testimonial-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(216,200,168,0.25); transition: background 0.25s ease; cursor: pointer; border: none; padding: 0; }
+    .testimonial-dot.active { background: var(--orange); }
+    .testimonial-dots.single { display: none; }
+
     /* GREEK */
     .greek-block { margin-top: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 40px 48px; border: 1px solid rgba(200,160,98,0.12); position: relative; }
     .greek-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(229,114,74,0.04) 0%, transparent 70%); pointer-events: none; }
@@ -117,6 +135,8 @@
       .mobile-menu { display: flex; }
       .mission-inner { padding: 0 24px; }
       .video-inner { padding: 0 24px; }
+      .testimonial-content { padding: 0 42px; }
+      .testimonial-arrow { width: 34px; height: 34px; font-size: 16px; }
       footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
       .greek-block { padding: 32px 24px; }
     }
@@ -235,8 +255,25 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-label reveal">What Clients Say</div>
+      <div class="section-rule reveal"></div>
+      <div class="testimonial-carousel reveal">
+        <button class="testimonial-arrow prev hidden" id="testiPrev" aria-label="Previous testimonial">&#8249;</button>
+        <div class="testimonial-content">
+          <p class="testimonial-quote" id="testiQuote"></p>
+          <div class="testimonial-attribution" id="testiAttribution"></div>
+        </div>
+        <button class="testimonial-arrow next hidden" id="testiNext" aria-label="Next testimonial">&#8250;</button>
+      </div>
+      <div class="testimonial-dots single" id="testiDots"></div>
+    </div>
+  </section>
+
   <!-- GREEK -->
-  <section style="padding: 80px 0; background: var(--black-soft);">
+  <section style="padding: 80px 0; background: var(--black);">
     <div style="max-width: 680px; margin: 0 auto; padding: 0 40px;">
       <div class="greek-block reveal">
         <div class="greek-context">The Greek word behind our name.</div>
@@ -254,6 +291,42 @@
   </footer>
 
   <script>
+    var testimonials = [
+      { quote: 'Elijah is talented and attentive. He works with us to make all our projects exactly how we want it.', name: 'Pastor Garrett Hale', church: 'Foundation Baptist Church, Georgetown, DE' }
+    ];
+    var testiIndex = 0;
+    var testiQuote = document.getElementById('testiQuote');
+    var testiAttribution = document.getElementById('testiAttribution');
+    var testiPrev = document.getElementById('testiPrev');
+    var testiNext = document.getElementById('testiNext');
+    var testiDots = document.getElementById('testiDots');
+
+    function renderTestimonial() {
+      var t = testimonials[testiIndex];
+      testiQuote.textContent = '\u201C' + t.quote + '\u201D';
+      testiAttribution.innerHTML = t.name + ' <span class="testimonial-church">&middot; ' + t.church + '</span>';
+      testiDots.innerHTML = '';
+      if (testimonials.length > 1) {
+        testiPrev.classList.remove('hidden');
+        testiNext.classList.remove('hidden');
+        testiDots.classList.remove('single');
+        testimonials.forEach(function(_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'testimonial-dot' + (i === testiIndex ? ' active' : '');
+          dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+          dot.addEventListener('click', function() { testiIndex = i; renderTestimonial(); });
+          testiDots.appendChild(dot);
+        });
+      } else {
+        testiPrev.classList.add('hidden');
+        testiNext.classList.add('hidden');
+        testiDots.classList.add('single');
+      }
+    }
+    testiPrev.addEventListener('click', function() { testiIndex = (testiIndex - 1 + testimonials.length) % testimonials.length; renderTestimonial(); });
+    testiNext.addEventListener('click', function() { testiIndex = (testiIndex + 1) % testimonials.length; renderTestimonial(); });
+    renderTestimonial();
+
     document.body.classList.add('js-ready');
     var hamburger = document.getElementById('hamburger');
     var mobileMenu = document.getElementById('mobileMenu');
